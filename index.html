@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✨ 多方法综合赋权计算器</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>多方法综合赋权计算器</h1>
+      <p class="subtitle">✨ 熵权法 · 变异系数法 · 博弈论融合</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <label for="dataInput">📊 输入你的数据（每行一个样本）</label>
+        <textarea id="dataInput" placeholder="示例：
+85, 92, 78
+90, 88, 82
+78, 95, 88"></textarea>
+
+        <div class="example">
+          💡 <strong>格式说明</strong>：<br>
+          • 每行 = 一个对象（如城市、产品、学生）<br>
+          • 指标间可用 <strong>逗号</strong> 或 <strong>空格/Tab</strong> 分隔<br>
+          • 支持负数（程序会自动平移为正值）<br>
+          • 至少需要 <strong>2 行 × 2 列</strong>
+        </div>
+
+        <!-- 控制参数 -->
+        <div class="control-row">
+          <div>
+            <label for="epsilonInput" style="margin:0; white-space:nowrap;">平移常数 ε：</label>
+            <input type="text" id="epsilonInput" value="1e-6" placeholder="如：1e-6">
+            <span style="color:#64748b; font-size:0.85rem;">（避免 ln(0) 错误）</span>
+          </div>
+        </div>
+
+        <!-- 方法选择 -->
+        <div class="method-row">
+          <label><input type="checkbox" id="methodEntropy" checked> 熵权法</label>
+          <label><input type="checkbox" id="methodCV" checked> 变异系数法</label>
+          <label><input type="checkbox" id="methodGame" checked> 博弈论综合赋权</label>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button id="calcBtn" class="btn" onclick="calculateWeights()">
+          🧮 计算权重
+        </button>
+        <button id="exportBtn" class="btn" onclick="exportResult()" style="display:none;">
+          📥 导出结果 (.txt)
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="result-header">📈 计算结果</div>
+        <div id="result-container">
+          <div id="result">点击“计算权重”后，结果将在此处显示。</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © 2026 综合赋权计算器 | 数据仅在本地处理 · 隐私安全
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
